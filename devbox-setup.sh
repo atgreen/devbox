@@ -9,6 +9,9 @@ fi
 # This is me
 USER=green
 
+# Double check that we're fully up-to-date
+yum -y update
+
 # Create my user
 /usr/sbin/useradd $USER
 
@@ -21,7 +24,9 @@ sudo su - $USER -c "git clone git://github.com/atgreen/emacs && mv emacs .emacs.
 # Install the proprietary but nevertheless useful dropbox
 sudo su - $USER -c "wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -"
 
-# Double check that we're fully up-to-date
-yum -y update
+# Install quicklisp
+sudo su - $USER -c "wget http://beta.quicklisp.org/quicklisp.lisp"
+sudo su - $USER -c "sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
+
 
 

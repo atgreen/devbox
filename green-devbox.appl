@@ -2,7 +2,7 @@ name: green-devbox
 summary: Anthony's Nice Hacking Box
 os:
   name: fedora
-  version: 16
+  version: 15
 hardware:
   partitions:
     "/":
@@ -44,6 +44,7 @@ packages:
   - sbcl
   - screen
   - subversion
+  - tcplay
   - texinfo
   - valgrind
   - wget
