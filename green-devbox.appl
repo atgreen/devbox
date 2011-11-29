@@ -1,0 +1,55 @@
+name: green-devbox
+summary: Anthony's Nice Hacking Box
+os:
+  name: fedora
+  version: 16
+hardware:
+  partitions:
+    "/":
+      size: 30
+packages:
+  - @core
+  - ant
+  - autoconf
+  - automake
+  - bison
+  - ccache
+  - createrepo
+  - cvs
+  - dejagnu
+  - diffutils
+  - emacs
+  - flex
+  - gcc
+  - gcc-c++
+  - gdb
+  - git
+  - gmp-devel
+  - gperf
+  - gtkwave
+  - iverilog
+  - libmpc-devel
+  - libtool
+  - m4
+  - mailx
+  - make
+  - mingw32-filesystem
+  - mpfr-devel
+  - openssh
+  - openssh-clients
+  - patch
+  - python-devel
+  - readline-devel
+  - rpm-build
+  - sbcl
+  - screen
+  - subversion
+  - texinfo
+  - valgrind
+  - wget
+  - zlib-devel
+
+post:
+  base:
+    - "git clone git://github.com/atgreen/devbox.git"
+    - "./devbox/devbox-setup"

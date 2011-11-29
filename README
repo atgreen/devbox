@@ -1,0 +1,14 @@
+These are a couple of scripts I use to create a cloud-hosted Fedora
+development box with all of the bits and pieces I use on a regular
+basis.
+
+Use a boxgrinder meta-appliance with green-devbox.appl to create a
+development box appliance like so...
+
+$ boxgrinder-build green-devbox.appl -p ec2 -d ebs
+
+
+Anthony Green - green@moxielogic.com
+
+
+
