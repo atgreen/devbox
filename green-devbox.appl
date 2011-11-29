@@ -52,4 +52,4 @@ packages:
 post:
   base:
     - "git clone git://github.com/atgreen/devbox.git"
-    - "./devbox/devbox-setup"
+    - "sh ./devbox/devbox-setup"

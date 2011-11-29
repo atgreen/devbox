@@ -7,6 +7,15 @@ development box appliance like so...
 
 $ boxgrinder-build green-devbox.appl -p ec2 -d ebs
 
+Remember to put this in /root/.boxgrinder/config:
+
+plugins:
+  ebs:
+    access_key: AWS_ACCESS_KEY
+    secret_access_key: SECRET_ACCESS_KEY
+    account_number: AWS_ACCOUNT_NUMBER
+    delete_on_termination: false
+
 
 Anthony Green - green@moxielogic.com
 
