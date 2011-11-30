@@ -25,17 +25,17 @@ echo DDDD
 
 echo EEEE
 # Download the mighty emacs config
-sudo su - $USER -c "git clone git://github.com/atgreen/emacs && mv emacs .emacs.d && rm .emacs && touch .emacs.d/private.el"
+su - $USER -c "git clone git://github.com/atgreen/emacs && mv emacs .emacs.d && rm .emacs && touch .emacs.d/private.el"
 
 echo FFFF
 # Install the proprietary but nevertheless useful dropbox
-sudo su - $USER -c "wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -"
+su - $USER -c "wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -"
 
 echo GGGG
 # Install quicklisp
-sudo su - $USER -c "wget http://beta.quicklisp.org/quicklisp.lisp"
+su - $USER -c "wget http://beta.quicklisp.org/quicklisp.lisp"
 echo HHHH
-sudo su - $USER -c "sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
+su - $USER -c "sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
 echo IIII
 
 
