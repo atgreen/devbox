@@ -30,22 +30,31 @@ cd /home/$USER
 pwd
 
 # Download the mighty emacs config
-git clone git://github.com/atgreen/emacs.git
-mv emacs .emacs.d 
-rm .emacs 
-touch .emacs.d/private.el
+su - $USER -c "git clone git://github.com/atgreen/emacs.git && mv emacs .emacs.d && rm .emacs && touch .emacs.d/private.el"
 
 # Install the proprietary but nevertheless useful dropbox.
-#wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -
+su - $USER -c "wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -"
 
 # Install quicklisp
-wget http://beta.quicklisp.org/quicklisp.lisp
+su - $USER -c "wget http://beta.quicklisp.org/quicklisp.lisp"
 #sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'
-EOF
-chmod 755 $CMDFILE
 
-su - $USER -c "$CMDFILE"
-rm $CMDFILE
+# Set up .screenrc
+cat > /home/$USER/.screenrc <<DOTFILE
+startup_message off
+defscrollback 10000
+hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w 
+shell -$RHEL
+escape ^za
+autodetach on
+screen -t Shell 0 bash
+screen -t Emacs em
+select 0
+DOTFILE
+
+chown -R $USER.$USER /home/$USER/.emacs.d
+chown -R $USER.$USER /home/$USER/.dropbox-dist
+chown -R $USER.$USER /home/$USER/.screenrc
 
 
 
