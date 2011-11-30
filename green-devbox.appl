@@ -1,12 +1,13 @@
 name: green-devbox
 summary: Anthony's Nice Hacking Box
+version: 4
 os:
   name: fedora
   version: 15
 hardware:
   partitions:
     "/":
-      size: 30
+      size: 20
 packages:
   - @core
   - ant
@@ -34,6 +35,7 @@ packages:
   - mailx
   - make
   - mingw32-filesystem
+  - mock
   - mpfr-devel
   - openssh
   - openssh-clients
@@ -52,5 +54,6 @@ packages:
 
 post:
   base:
+    - "cd /root"
     - "git clone git://github.com/atgreen/devbox.git"
-    - "sh ./devbox/devbox-setup"
+    - "sh ./devbox/devbox-setup.sh"
