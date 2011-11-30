@@ -30,21 +30,22 @@ cd /home/$USER
 pwd
 
 # Download the mighty emacs config
-git clone git://github.com/atgreen/emacs 
+git clone git://github.com/atgreen/emacs.git
 mv emacs .emacs.d 
 rm .emacs 
 touch .emacs.d/private.el
 
-# Install the proprietary but nevertheless useful dropbox..
-wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -
+# Install the proprietary but nevertheless useful dropbox.
+#wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -
 
 # Install quicklisp
 wget http://beta.quicklisp.org/quicklisp.lisp
-sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'
+#sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'
 EOF
 chmod 755 $CMDFILE
 
 su - $USER -c "$CMDFILE"
+rm $CMDFILE
 
 
 
