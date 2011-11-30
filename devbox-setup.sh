@@ -18,15 +18,32 @@ yum -y update
 # Make me all powerful
 /bin/echo '$USER  ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers
 
-# Download the mighty emacs config
-su - $USER -c "git clone git://github.com/atgreen/emacs && mv emacs .emacs.d && rm .emacs && touch .emacs.d/private.el"
+# Run a series of commands as me...
 
-# Install the proprietary but nevertheless useful dropbox
-su - $USER -c "wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -"
+CMDFILE=`mktemp`
+cat > $CMDFILE <<EOF
+#!/bin/sh
+
+cd $HOME
+
+# Download the mighty emacs config
+git clone git://github.com/atgreen/emacs 
+mv emacs .emacs.d 
+rm .emacs 
+touch .emacs.d/private.el
+
+# Install the proprietary but nevertheless useful dropbox..
+wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -
 
 # Install quicklisp
-su - $USER -c "wget http://beta.quicklisp.org/quicklisp.lisp"
-su - $USER -c "sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
+wget http://beta.quicklisp.org/quicklisp.lisp
+sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'
+EOF
+chmod 755 $CMDFILE
+
+su - $USER -c "$CMDFILE"
+
+
 
 
 
