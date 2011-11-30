@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 # Make sure that we are root
 if [ `whoami` != 'root' ]; then
   echo "permission denied. (sudo su -)"
@@ -7,7 +9,7 @@ if [ `whoami` != 'root' ]; then
 fi
 
 # This is me
-USER=green
+export USER=green
 
 # Double check that we're fully up-to-date
 yum -y update
@@ -24,7 +26,8 @@ CMDFILE=`mktemp`
 cat > $CMDFILE <<EOF
 #!/bin/sh
 
-cd $HOME
+cd /home/$USER
+pwd
 
 # Download the mighty emacs config
 git clone git://github.com/atgreen/emacs 
