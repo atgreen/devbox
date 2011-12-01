@@ -37,12 +37,12 @@ su - $USER -c "cd /home/$USER && wget http://beta.quicklisp.org/quicklisp.lisp"
 cat > /home/$USER/.screenrc <<DOTFILE
 startup_message off
 defscrollback 10000
-hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w 
+hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w"
 shell -$RHEL
 escape ^za
 autodetach on
 screen -t Shell 0 bash
-screen -t Emacs em
+screen -t Emacs emacs
 select 0
 DOTFILE
 
