@@ -23,7 +23,8 @@ yum -y update
 # Run a series of commands as me...
 
 # Download the mighty emacs config
-su - $USER -c "cd /home/$USER && git clone git://github.com/atgreen/emacs.git && mv emacs .emacs.d && rm .emacs && touch .emacs.d/private.el"
+su - $USER -c "cd /home/$USER && git clone git://github.com/atgreen/emacs.git"
+su - $USER -c "cd /home/$USER && mv emacs .emacs.d && rm .emacs && touch .emacs.d/private.el"
 
 # Install the proprietary but nevertheless useful dropbox.
 su - $USER -c "cd /home/$USER && wget -O - http://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -"
@@ -48,8 +49,4 @@ DOTFILE
 chown -R $USER.$USER /home/$USER/.emacs.d
 chown -R $USER.$USER /home/$USER/.dropbox-dist
 chown -R $USER.$USER /home/$USER/.screenrc
-
-
-
-
 
