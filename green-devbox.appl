@@ -25,17 +25,21 @@ packages:
   - gcc
   - gcc-c++
   - gdb
+  - gettext
   - git
   - gmp-devel
   - gperf
   - gtkwave
   - iverilog
+  - libdaemon-devel
+  - libidn-devel
   - libmpc-devel
   - libtool
   - m4
   - mailx
   - make
   - mingw32-filesystem
+  - mlocate
   - mock
   - mpfr-devel
   - openssh
@@ -55,6 +59,9 @@ packages:
   - v8-devel
   - valgrind
   - wget
+  - xorg-x11-fonts*
+  - xorg-x11-server-utils
+  - xorg-x11-xauth
   - zlib-devel
 
 post:

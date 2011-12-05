@@ -18,7 +18,7 @@ yum -y update
 /usr/sbin/useradd $USER
 
 # Make me all powerful
-/bin/echo '$USER  ALL=(ALL)  NOPASSWD: ALL' >> /etc/sudoers
+/bin/echo $USER "  ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
 
 # Run a series of commands as me...
 
@@ -31,7 +31,7 @@ su - $USER -c "cd /home/$USER && wget -O - http://www.dropbox.com/download?plat=
 
 # Install quicklisp
 su - $USER -c "cd /home/$USER && wget http://beta.quicklisp.org/quicklisp.lisp"
-#sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'
+su - $USER -c "cd /home/$USER && sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
 
 # Set up .screenrc
 cat > /home/$USER/.screenrc <<DOTFILE
@@ -41,9 +41,9 @@ hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w"
 shell -$RHEL
 escape ^za
 autodetach on
+screen -t Emacs emacs -nw
 screen -t Shell 0 bash
-screen -t Emacs emacs
-select 0
+select 1
 DOTFILE
 
 chown -R $USER.$USER /home/$USER/.emacs.d
