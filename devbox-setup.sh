@@ -31,10 +31,10 @@ su - $USER -c "cd /home/$USER && wget -O - http://www.dropbox.com/download?plat=
 
 # Install quicklisp
 su - $USER -c "cd /home/$USER && wget http://beta.quicklisp.org/quicklisp.lisp"
-su - $USER -c "cd /home/$USER && sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
+# su - $USER -c "cd /home/$USER && sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
 
 # Set up .screenrc
-cat > /home/$USER/.screenrc <<DOTFILE
+cat > /home/$USER/.screenrc <<EOF
 startup_message off
 defscrollback 10000
 hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w"
@@ -44,9 +44,24 @@ autodetach on
 screen -t Emacs emacs -nw
 screen -t Shell 0 bash
 select 1
-DOTFILE
+EOF
+
+cat > /home/$USER/.gitconfig <<EOF
+[user]
+        name = Anthony Green
+        email = green@moxielogic.com
+[color]
+        ui = auto
+EOF
+
+cat >> /home/$USER/.bashrc <<EOF
+alias e="emacsclient -t"
+alias qli="sbcl --load quicklisp.lisp --eval '(progn (quicklisp-quickstart:install) (sb-ext:quit))'"
+EOF
 
 chown -R $USER.$USER /home/$USER/.emacs.d
 chown -R $USER.$USER /home/$USER/.dropbox-dist
 chown -R $USER.$USER /home/$USER/.screenrc
+chown -R $USER.$USER /home/$USER/.gitconfig
+
 
