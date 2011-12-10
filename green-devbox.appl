@@ -7,7 +7,7 @@ os:
 hardware:
   partitions:
     "/":
-      size: 24
+      size: 40
 packages:
   - @core
   - ant

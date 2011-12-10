@@ -3,7 +3,7 @@ development box with all of the bits and pieces I use on a regular
 basis.
 
 Use a boxgrinder meta-appliance with green-devbox.appl to create a
-development box appliance like so...
+development box appliance as root like so...
 
 $ boxgrinder-build green-devbox.appl -p ec2 -d ebs
 
@@ -15,6 +15,15 @@ plugins:
     secret_access_key: SECRET_ACCESS_KEY
     account_number: AWS_ACCOUNT_NUMBER
     delete_on_termination: false
+
+Also note that you can mount plenty of ephemeral storage on the
+boxgrinder meta-appliance like so:
+
+$ mount /dev/xvdb /mnt
+
+The meta-appliances don't have much free storage, so I recommend
+building your image in ephemeral storage at /mnt.  Just "cd /mnt"
+before running boxgrinder-build as above.
 
 
 Anthony Green - green@moxielogic.com
