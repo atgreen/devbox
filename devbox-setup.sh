@@ -38,7 +38,7 @@ cat > /home/$USER/.screenrc <<EOF
 startup_message off
 defscrollback 10000
 hardstatus alwayslastline "%{.bW}%-w%{.rW}%n %t%{-}%+w"
-shell -$RHEL
+shell /bin/bash
 escape ^za
 autodetach on
 screen -t Emacs emacs -nw
